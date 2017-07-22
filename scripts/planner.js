@@ -958,7 +958,6 @@ function planner_controller($scope){
 		self.seasons = [];
 		self.stages = [];
 		self.regrow;
-		self.wild = false;
 		
 		// Harvest data
 		self.harvest = {
@@ -992,7 +991,6 @@ function planner_controller($scope){
 			self.stages = data.stages;
 			self.regrow = data.regrow;
 			self.wiki_page = data.wiki_page;
-			if (data.wild) self.wild = true;
 			
 			// Harvest data
 			if (data.harvest.min) self.harvest.min = data.harvest.min;
@@ -1076,9 +1074,6 @@ function planner_controller($scope){
 	
 	// Get thumbnail image
 	Crop.prototype.get_image = function(seeds){
-		if (seeds && this.wild){
-			return "images/seeds/wild_"+this.seasons[0]+".png";
-		}
 		if (seeds) return "images/seeds/"+this.id+".png";
 		return "images/crops/"+this.id+".png";
 	};
